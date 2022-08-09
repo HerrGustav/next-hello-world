@@ -1,7 +1,4 @@
-import {
-  interceptBackendCall,
-  interceptBackendCallWithFailure,
-} from "../common/api";
+import { interceptBackendCall } from "../common/api";
 import { Routes, visit } from "../common/visit";
 
 enum PageElements {
