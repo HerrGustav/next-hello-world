@@ -10,9 +10,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install dependencies
+        run: npm ci
       - name: Linting
         run: npm run lint
       - name: E2e tests
-        run: |
-          npm i 
-          npm run e2e:headless
+        run: npm run e2e:headless
