@@ -1,0 +1,13 @@
+name: Continuous Integration
+on: [push]
+jobs:
+  Lint and test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Linting
+        run: npm run fmt
+      - name: E2e tests
+        run: npm run e2e:headless
+      - run: echo "Done, status is ${{ job.status }}."
