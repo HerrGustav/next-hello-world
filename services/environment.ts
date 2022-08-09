@@ -19,7 +19,7 @@ const retrieveEnvironment = (): Environment => {
       return Environment.Testing;
     default:
       // @TODO put a logger here:
-      // ref.: https://github.com/HerrGustav/hello-world/issues/3
+      // ref.: https://github.com/HerrGustav/next-hello-world/issues/3
       console.error(
         "failed to parse environment flag, was: ",
         env,

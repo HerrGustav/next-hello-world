@@ -9,7 +9,7 @@ import { TransitionAnimationCurve, TransitionAnimationTiming } from "./global";
  * @param delay number
  * @desc transition is creating a transition for one or multiple properties.
  * If multiple properties are given, it will apply the same duration, curve and delay for them.
- * @TODO add a jest test ref.: https://github.com/HerrGustav/hello-world/issues/4
+ * @TODO add a jest test ref.: https://github.com/HerrGustav/next-hello-world/issues/4
  * @returns Css Properties
  */
 const transition = (
