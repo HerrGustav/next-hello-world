@@ -1,6 +1,7 @@
 import { css } from "styled-components";
 
 // baseFontSize is 16px for most browsers;
+// ref.: https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#rems
 const baseFontSize = 16;
 
 const pxToRem = (pxValue: number): number => pxValue / baseFontSize;

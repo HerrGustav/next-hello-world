@@ -2,7 +2,7 @@ import styled, { ThemeProps } from "styled-components";
 import { transition } from "../../styles/transitions";
 import { Theme } from "../../styles/theme/themes";
 
-const StyledButton = styled.button<ThemeProps<Theme>>`
+const Button = styled.button<ThemeProps<Theme>>`
   display: block;
   min-height: 25px;
   height: 58px;
@@ -26,10 +26,10 @@ const StyledButton = styled.button<ThemeProps<Theme>>`
   }
 `;
 
-const StyledWrapper = styled.div<ThemeProps<Theme>>`
+const Wrapper = styled.div<ThemeProps<Theme>>`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export { StyledButton, StyledWrapper };
+export { Button, Wrapper };

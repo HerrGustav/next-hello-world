@@ -1,13 +1,13 @@
 import React from "react";
 import { ThemeToggle } from "../../components/ThemeToggle";
-import { StyledInnerWrap } from "./styles";
+import { InnerWrap } from "./styles";
 
 const Header: React.FC = (): JSX.Element => {
   return (
     <header>
-      <StyledInnerWrap>
+      <InnerWrap>
         <ThemeToggle />
-      </StyledInnerWrap>
+      </InnerWrap>
     </header>
   );
 };

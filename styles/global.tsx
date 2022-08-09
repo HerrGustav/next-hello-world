@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle<ThemeProps<Theme>>`
         }
     }
 
+    html {
+        font-size: 100%;
+    }
+
     html,
     body {
         padding: 0;

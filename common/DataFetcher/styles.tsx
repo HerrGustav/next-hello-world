@@ -15,7 +15,8 @@ const ContentBox = styled.div`
   display: block;
   margin: 0 auto;
   margin-top: 25px;
-  width: 90vw;
+  width: 100%;
+  max-width: 620px;
   padding: 25px 15px;
   border: 2px solid ${(props) => props.theme.Primary};
   border-radius: ${(props) => props.theme.BorderRadius};

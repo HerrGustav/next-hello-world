@@ -2,24 +2,27 @@ import styled, { ThemeProps } from "styled-components";
 import { animate, fadeIn } from "../styles/animations";
 import { fontSize } from "../styles/fonts";
 import { TransitionAnimationTiming } from "../styles/global";
+import { blockCenterRelative } from "../styles/positions";
 import { Theme } from "../styles/theme/themes";
 import { transition } from "../styles/transitions";
 
 const PageContainer = styled.div<ThemeProps<Theme>>`
+  ${blockCenterRelative};
   background: ${(props) => props.theme.Secondary};
+  height: 100%;
   min-height: 100vh;
-  padding: 0 2rem;
+  padding: 0 25px;
   ${transition("background")};
   ${animate(fadeIn, TransitionAnimationTiming * 3)};
 `;
 
 const PageMain = styled.main<ThemeProps<Theme>>`
-  padding: 4rem 0;
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 15vh;
 `;
 
 const Title = styled.h1<ThemeProps<Theme>>`
