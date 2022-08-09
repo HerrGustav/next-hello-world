@@ -1,7 +1,10 @@
 import styled, { ThemeProps } from "styled-components";
 import { animate, fadeIn } from "../styles/animations";
 import { fontSize } from "../styles/fonts";
-import { TransitionAnimationTiming } from "../styles/global";
+import {
+  TransitionAnimationCurve,
+  TransitionAnimationTiming,
+} from "../styles/global";
 import { blockCenterRelative } from "../styles/positions";
 import { Theme } from "../styles/theme/themes";
 import { transition } from "../styles/transitions";
@@ -13,7 +16,15 @@ const PageContainer = styled.div<ThemeProps<Theme>>`
   min-height: 100vh;
   padding: 0 25px;
   ${transition("background")};
-  ${animate(fadeIn, TransitionAnimationTiming * 3)};
+
+  * {
+    ${animate(
+      fadeIn,
+      TransitionAnimationTiming * 3,
+      TransitionAnimationCurve,
+      TransitionAnimationTiming * 3.5
+    )};
+  }
 `;
 
 const PageMain = styled.main<ThemeProps<Theme>>`

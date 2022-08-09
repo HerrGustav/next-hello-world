@@ -1,12 +1,13 @@
-# Hello-World
+# next-hello-world
 
-My personal website.
+A basic sample page using [NextJs](https://nextjs.org/docs).
 
 ## Getting Started
 
 To start a development server with hot reload, run:
 
 ```bash
+npm i # install the dependencies first.
 npm run dev
 ```
 
@@ -25,7 +26,7 @@ This project is using cypress as a test runner. To open cypress simply run:
 npm run cypress
 ```
 
-To see the integration tests running in a ui run:
+To see the integration tests running in an ui run:
 
 ```bash
 npm run cypress:ui

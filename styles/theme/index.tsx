@@ -26,7 +26,7 @@ const Theming = (props: { children: React.ReactNode }): JSX.Element => {
 
   return (
     /* this could be simplified by passing a setter to the styled components theme provider. 
-       ref.: https://github.com/HerrGustav/hello-world/issues/1
+       ref.: https://github.com/HerrGustav/next-hello-world/issues/1
     */
     <ThemeContext.Provider value={[currentTheme, setCurrentTheme]}>
       <ThemeProvider theme={() => getTheme(currentTheme)}>

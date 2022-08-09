@@ -16,7 +16,8 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   // let's wait a bit, so we can see it in "action"
-  sleep(200).then(() => {
+  // on the frontend...
+  sleep(1500).then(() => {
     res.status(200).json({ msg: "👋 from backend" });
   });
 }

@@ -46,4 +46,5 @@ describe("Home - Data fetching", () => {
   });
 
   // @TODO add tests for failed requests
+  // tracked here ref.: https://github.com/HerrGustav/hello-world/issues/2
 });
