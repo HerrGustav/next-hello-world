@@ -4,7 +4,6 @@ import { TransitionAnimationCurve, TransitionAnimationTiming } from "./global";
 const fadeUp = keyframes`
     from {
         opacity: 0;
-        visibility: hidden;
         transform: translateY(5vh);
     }
 
@@ -14,12 +13,22 @@ const fadeUp = keyframes`
     }
 `;
 
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+`;
+
 const animate = (
   animation: Keyframes,
-  direction: string = "forwards",
   duration: number = TransitionAnimationTiming,
   curve: string = TransitionAnimationCurve,
-  delay: number = 0
+  delay: number = 0,
+  direction: string = "forwards"
 ) => {
   return css`
     animation: ${animation};
@@ -30,4 +39,4 @@ const animate = (
   `;
 };
 
-export { fadeUp, animate };
+export { fadeUp, fadeIn, animate };

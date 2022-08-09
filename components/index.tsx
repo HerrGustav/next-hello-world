@@ -1,5 +1,7 @@
 import styled, { ThemeProps } from "styled-components";
+import { animate, fadeIn } from "../styles/animations";
 import { fontSize } from "../styles/fonts";
+import { TransitionAnimationTiming } from "../styles/global";
 import { Theme } from "../styles/theme/themes";
 import { transition } from "../styles/transitions";
 
@@ -8,6 +10,7 @@ const PageContainer = styled.div<ThemeProps<Theme>>`
   min-height: 100vh;
   padding: 0 2rem;
   ${transition("background")};
+  ${animate(fadeIn, TransitionAnimationTiming * 3)};
 `;
 
 const PageMain = styled.main<ThemeProps<Theme>>`
