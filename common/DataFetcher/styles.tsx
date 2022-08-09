@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { animate, fadeUp } from "../../styles/animations";
+import {
+  TransitionAnimationCurve,
+  TransitionAnimationTiming,
+} from "../../styles/global";
 import { blockCenterRelative } from "../../styles/positions";
 
 const Section = styled.section`
@@ -8,6 +12,13 @@ const Section = styled.section`
 
   button {
     ${blockCenterRelative}
+    ${animate(
+      fadeUp,
+      TransitionAnimationTiming * 1.2,
+      TransitionAnimationCurve,
+      TransitionAnimationTiming * 1.5,
+      "both"
+    )};
   }
 `;
 

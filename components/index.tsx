@@ -1,10 +1,7 @@
 import styled, { ThemeProps } from "styled-components";
 import { animate, fadeIn } from "../styles/animations";
 import { fontSize } from "../styles/fonts";
-import {
-  TransitionAnimationCurve,
-  TransitionAnimationTiming,
-} from "../styles/global";
+import { TransitionAnimationTiming } from "../styles/global";
 import { blockCenterRelative } from "../styles/positions";
 import { Theme } from "../styles/theme/themes";
 import { transition } from "../styles/transitions";
@@ -18,12 +15,7 @@ const PageContainer = styled.div<ThemeProps<Theme>>`
   ${transition("background")};
 
   * {
-    ${animate(
-      fadeIn,
-      TransitionAnimationTiming * 3,
-      TransitionAnimationCurve,
-      TransitionAnimationTiming * 3.5
-    )};
+    ${animate(fadeIn, TransitionAnimationTiming * 3)};
   }
 `;
 

@@ -4,7 +4,7 @@ import { TransitionAnimationCurve, TransitionAnimationTiming } from "./global";
 const fadeUp = keyframes`
     from {
         opacity: 0;
-        transform: translateY(5vh);
+        transform: translateY(1.5vh);
     }
 
     to {
@@ -23,19 +23,28 @@ const fadeIn = keyframes`
     }
 `;
 
+/**
+ *
+ * @param animation keyframes (name of the animation)
+ * @param duration number (time in seconds)
+ * @param curve string (e.g. "ease", "ease-in", etc.)
+ * @param delay number (time in seconds)
+ * @param fillMode string (e.g, "forwards", "both", etc.)
+ * @returns Css Properties
+ */
 const animate = (
   animation: Keyframes,
   duration: number = TransitionAnimationTiming,
   curve: string = TransitionAnimationCurve,
   delay: number = 0,
-  direction: string = "forwards"
+  fillMode: string = "forwards"
 ) => {
   return css`
     animation: ${animation};
-    animation-direction: ${direction};
     animation-duration: ${duration}s;
     animation-timing-function: ${curve};
-    animation-delay: ${delay};
+    animation-delay: ${delay}s;
+    animation-fill-mode: ${fillMode};
   `;
 };
 
