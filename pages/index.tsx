@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import React from "react";
+import React, { useState } from "react";
 import { DataFetcher } from "../common/DataFetcher";
 import { Header } from "../common/Header/Header";
 import { PageContainer, PageMain, Title } from "../components";
 
 const Home: NextPage = () => {
+  const [fadeIn, setFadeIn] = useState<boolean>(false);
   return (
-    <PageContainer>
+    <PageContainer onTransitionEnd={() => setFadeIn(true)}>
       <Head>
         <title>Hello World</title>
         <meta name="description" content="Hello world!" />
@@ -15,12 +16,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <Header />
+      {fadeIn && <Header />}
 
-      <PageMain>
-        <Title data-qa="title">Hello World.</Title>
-        <DataFetcher />
-      </PageMain>
+      {fadeIn && (
+        <PageMain>
+          <Title data-qa="title">Hello World.</Title>
+          <DataFetcher />
+        </PageMain>
+      )}
 
       <footer></footer>
     </PageContainer>

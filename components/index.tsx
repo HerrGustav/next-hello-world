@@ -1,10 +1,18 @@
 import styled, { ThemeProps } from "styled-components";
-import { animate, fadeIn } from "../styles/animations";
+import { onStartUpFadeIn } from "../styles/animations";
 import { fontSize } from "../styles/fonts";
-import { TransitionAnimationTiming } from "../styles/global";
 import { blockCenterRelative } from "../styles/positions";
 import { Theme } from "../styles/theme/themes";
 import { transition } from "../styles/transitions";
+
+const PageMain = styled.main<ThemeProps<Theme>>`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+`;
 
 const PageContainer = styled.div<ThemeProps<Theme>>`
   ${blockCenterRelative};
@@ -14,18 +22,9 @@ const PageContainer = styled.div<ThemeProps<Theme>>`
   padding: 0 25px;
   ${transition("background")};
 
-  * {
-    ${animate(fadeIn, TransitionAnimationTiming * 3)};
+  ${PageMain} {
+    ${onStartUpFadeIn};
   }
-`;
-
-const PageMain = styled.main<ThemeProps<Theme>>`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15vh;
 `;
 
 const Title = styled.h1<ThemeProps<Theme>>`

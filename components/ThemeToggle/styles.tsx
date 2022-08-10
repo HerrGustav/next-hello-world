@@ -1,6 +1,7 @@
 import styled, { ThemeProps } from "styled-components";
 import { transition } from "../../styles/transitions";
 import { Theme } from "../../styles/theme/themes";
+import { onStartUpFadeIn } from "../../styles/animations";
 
 const Button = styled.button<ThemeProps<Theme>>`
   display: block;
@@ -15,6 +16,7 @@ const Button = styled.button<ThemeProps<Theme>>`
   cursor: pointer;
   padding: 5px;
   ${transition("background")};
+  ${onStartUpFadeIn};
 
   .icon,
   .icon path {

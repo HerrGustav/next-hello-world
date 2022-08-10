@@ -48,4 +48,12 @@ const animate = (
   `;
 };
 
-export { fadeUp, fadeIn, animate };
+const onStartUpFadeIn = animate(
+  fadeIn,
+  TransitionAnimationTiming * 3,
+  TransitionAnimationCurve,
+  0,
+  "both"
+);
+
+export { fadeUp, fadeIn, animate, onStartUpFadeIn };
