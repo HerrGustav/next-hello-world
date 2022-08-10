@@ -36,6 +36,8 @@ const DataFetcher: React.FC = (): JSX.Element => {
   const fetchData = () => {
     setState({ ...state, isLoading: true, fetchedData: false, data: null });
 
+    // this needs some error handling
+    // ref.: https://github.com/HerrGustav/next-hello-world/issues/2
     fetch("/api/hello-data")
       .then((res) => res.json())
       .then((data) =>

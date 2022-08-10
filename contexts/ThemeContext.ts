@@ -15,7 +15,7 @@ const ThemeContext = createContext<[theme: Themes, setTheme: ThemeSetter]>([
 const useTheme = (): [Themes, ThemeSetter] => {
   const [theme, setTheme] = useContext(ThemeContext);
   if (!theme || !setTheme) {
-    console.error("useTheme can be only used inside a React function!");
+    console.error("useTheme can only be used inside a React component!");
   }
   return [theme, setTheme];
 };
