@@ -20,7 +20,7 @@ const LoginContext = createContext<[login: LoginState, setLogin: LoginSetter]>([
 const useLogin = (): [LoginState, LoginSetter] => {
   const [login, setLogin] = useContext(LoginContext);
   if (!login || !setLogin) {
-    console.error("useTheme can only be used inside a React component!");
+    console.error("useLogin can only be used inside a React component!");
   }
 
   return [login, setLogin];
@@ -29,7 +29,7 @@ const useLogin = (): [LoginState, LoginSetter] => {
 const useIsLoggedIn = (): boolean => {
   const [login] = useContext(LoginContext);
   if (!login) {
-    console.error("useTheme can only be used inside a React component!");
+    console.error("useIsLoggedIn can only be used inside a React component!");
   }
 
   return login.loggedIn;
@@ -38,7 +38,7 @@ const useIsLoggedIn = (): boolean => {
 const useUserName = (): string => {
   const [login] = useContext(LoginContext);
   if (!login) {
-    console.error("useTheme can only be used inside a React component!");
+    console.error("useUserName can only be used inside a React component!");
   }
 
   return login.userName;

@@ -38,7 +38,7 @@ const LoginMask: React.FC = (): JSX.Element => {
   // it can't replace a server side check, though:
   const checkEmail = () => {
     if (email.length === 0) {
-      // if the email field is rest, we should not show an error message
+      // if the email field had a reset, we should not show an error message
       setEmailIsValid(null);
       return;
     }

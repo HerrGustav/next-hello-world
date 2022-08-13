@@ -5,8 +5,8 @@ import { StyledVideoPlayerWrap } from "./styles";
 type VideoPlayerProps = {
   id: string;
   src: string;
-  // options: VideoJsPlayerOptions;
-  // onReady: (p: VideoJsPlayer) => void;
+  jumpToPos: number;
+  autoplay?: boolean;
 };
 
 const VideoPlayer: React.FC<VideoPlayerProps> = (
@@ -15,8 +15,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (
   const player = useRef<HTMLVideoElement | null>(null);
   const jump = () => {
     if (!player.current) return;
-    player.current.currentTime = 22;
+    player.current.currentTime = props.jumpToPos;
   };
+
   return (
     <StyledVideoPlayerWrap>
       <div data-vjs-player>
@@ -25,9 +26,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (
           ref={player}
           src={props.src}
           controls
+          autoPlay={props.autoplay}
           preload="auto"
         >
-          Your browser does not support the video tag.
+          <p>Your browser does not support the video tag.</p>
         </video>
       </div>
       <Text>If you want to cut short and don't watch the same video:</Text>

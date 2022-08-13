@@ -8,6 +8,11 @@ import { PageContainer, PageMain, Title } from "../components";
 import { Routes } from "../config";
 import { useIsLoggedIn, useUserName } from "../contexts/LoginContext";
 
+// exampleVideo is holding the url to a example video,
+// you can also download a video, put it to the "public" folder
+// of this app and simply reference it here accordingly.
+const exampleVideo = "https://vjs.zencdn.net/v/oceans.mp4";
+
 const Welcome: NextPage = () => {
   const userName = useUserName();
   const userLoggedIn = useIsLoggedIn();
@@ -32,7 +37,12 @@ const Welcome: NextPage = () => {
 
       <PageMain>
         <Title data-qa="title">Welcome back {userName}!</Title>
-        <VideoPlayer id="welcome-player" src="/oceans_test_video.mp4" />
+        <VideoPlayer
+          id="welcome-player"
+          src={exampleVideo}
+          jumpToPos={22}
+          autoplay={true}
+        />
       </PageMain>
 
       <footer></footer>
