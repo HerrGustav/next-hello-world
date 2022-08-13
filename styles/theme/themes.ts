@@ -5,10 +5,12 @@ type Theme = {
   Secondary: string;
   FontColor: string;
   BorderRadius: string;
+  FontColorError: string;
 };
 
 const defaultTheme = {
   BorderRadius: "8px",
+  FontColorError: "red",
 };
 
 const DarkMode: Theme = {
