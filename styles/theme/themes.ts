@@ -5,24 +5,25 @@ type Theme = {
   Secondary: string;
   FontColor: string;
   BorderRadius: string;
+  FontColorError: string;
 };
 
 const defaultTheme = {
   BorderRadius: "8px",
+  FontColorError: "red",
+  FontColor: "#fff",
 };
 
 const DarkMode: Theme = {
   ...defaultTheme,
   Primary: "#311EA8",
   Secondary: "#EBB4E9",
-  FontColor: "#fff",
 };
 
 const LightMode: Theme = {
   ...defaultTheme,
   Primary: "#A845E4",
   Secondary: "#FFDCFE",
-  FontColor: "#fff",
 };
 
 const getTheme = (theme: Themes): Theme => {

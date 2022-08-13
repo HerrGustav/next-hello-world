@@ -1,12 +1,24 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import React, { useState } from "react";
-import { DataFetcher } from "../common/DataFetcher";
+import Router from "next/router";
+import React, { useEffect, useState } from "react";
 import { Header } from "../common/Header/Header";
+import { LoginMask } from "../common/LoginMask";
 import { PageContainer, PageMain, Title } from "../components";
+import { Routes } from "../config";
+import { useIsLoggedIn } from "../contexts/LoginContext";
 
 const Home: NextPage = () => {
   const [fadeIn, setFadeIn] = useState<boolean>(false);
+  const userLoggedIn = useIsLoggedIn();
+
+  useEffect(() => {
+    if (userLoggedIn) {
+      Router.push(Routes.Welcome);
+      return;
+    }
+  }, [userLoggedIn]);
+
   return (
     <PageContainer onTransitionEnd={() => setFadeIn(true)}>
       <Head>
@@ -20,8 +32,8 @@ const Home: NextPage = () => {
 
       {fadeIn && (
         <PageMain>
-          <Title data-qa="title">Hello World.</Title>
-          <DataFetcher />
+          <Title data-qa="title">Login:</Title>
+          <LoginMask />
         </PageMain>
       )}
 

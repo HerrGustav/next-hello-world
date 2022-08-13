@@ -44,11 +44,14 @@ const Button = styled.button<ThemeProps<Theme>>`
   box-shadow: none;
   border: 2px solid ${(props) => props.theme.Primary};
   cursor: pointer;
-  ${transition(["color", "background"])};
+  ${transition(["opacity"])};
 
-  &:hover {
-    background: ${(props) => props.theme.Secondary};
-    color: ${(props) => props.theme.Primary};
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.4;
   }
 `;
 

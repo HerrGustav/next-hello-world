@@ -1,4 +1,4 @@
-const interceptBackendCall = (
+const interceptHelloData = (
   response?: { [key: string]: string | null },
   delay: number = 0
 ) =>
@@ -14,6 +14,26 @@ const interceptBackendCall = (
         delay,
       }
     )
-    .as("interceptBackendCall");
+    .as("interceptHelloData");
 
-export { interceptBackendCall };
+const interceptLogin = (
+  response?: { [key: string]: string | number | boolean | null },
+  code?: number,
+  delay: number = 0
+) =>
+  cy
+    .intercept(
+      {
+        method: "POST",
+        url: "http://localhost:3000/api/login",
+        hostname: "localhost",
+      },
+      {
+        body: response,
+        statusCode: code,
+        delay,
+      }
+    )
+    .as("interceptLogin");
+
+export { interceptHelloData, interceptLogin };
