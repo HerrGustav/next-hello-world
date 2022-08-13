@@ -11,6 +11,7 @@ import { useIsLoggedIn, useUserName } from "../contexts/LoginContext";
 // exampleVideo is holding the url to a example video,
 // you can also download a video, put it to the "public" folder
 // of this app and simply reference it here accordingly.
+// e.g.: "some_test_video.mp4"
 const exampleVideo = "https://vjs.zencdn.net/v/oceans.mp4";
 
 const Welcome: NextPage = () => {
@@ -36,7 +37,9 @@ const Welcome: NextPage = () => {
       <Header />
 
       <PageMain>
-        <Title data-qa="title">Welcome back {userName}!</Title>
+        <Title data-qa="title">
+          Welcome back <b>{userName}</b>!
+        </Title>
         <VideoPlayer
           id="welcome-player"
           src={exampleVideo}

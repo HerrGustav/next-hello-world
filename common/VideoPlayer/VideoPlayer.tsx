@@ -22,6 +22,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (
     <StyledVideoPlayerWrap>
       <div data-vjs-player>
         <video
+          id={props.id}
           data-qa="video-player"
           ref={player}
           src={props.src}
@@ -34,7 +35,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (
       </div>
       <Text>If you want to cut short and don't watch the same video:</Text>
       <Button data-qa="video-player--jump-mark" onClick={jump}>
-        Jump to best moment!
+        Jump to the best moment!
       </Button>
     </StyledVideoPlayerWrap>
   );
