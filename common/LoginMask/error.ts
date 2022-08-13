@@ -1,3 +1,5 @@
+import { config } from "../../config";
+
 type LoginError = { type: "unauthorized" | "other"; message: string };
 
 const unauthorizedError: LoginError = {
@@ -10,5 +12,13 @@ const otherError: LoginError = {
   message: "Something went wrong. Please try later again.",
 };
 
+const parseError = (status: number): LoginError => {
+  if (status === config.login.unauthorizedCode) {
+    return unauthorizedError;
+  }
+
+  return otherError;
+};
+
 export type { LoginError };
-export { unauthorizedError, otherError };
+export { parseError };

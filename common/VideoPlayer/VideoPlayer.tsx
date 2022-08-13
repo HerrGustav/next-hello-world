@@ -33,7 +33,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (
           <p>Your browser does not support the video tag.</p>
         </video>
       </div>
-      <Text>If you want to cut short and don't watch the same video:</Text>
+      <Text>If you want to cut short and don't watch the whole video:</Text>
       <Button data-qa="video-player--jump-mark" onClick={jump}>
         Jump to the best moment!
       </Button>
