@@ -14,10 +14,10 @@ const interceptHelloData = (
         delay,
       }
     )
-    .as("interceptBackendCall");
+    .as("interceptHelloData");
 
 const interceptLogin = (
-  response?: { [key: string]: string | number | null },
+  response?: { [key: string]: string | number | boolean | null },
   code?: number,
   delay: number = 0
 ) =>

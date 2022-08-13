@@ -1,4 +1,4 @@
-import { interceptBackendCall } from "./common/api";
+import { interceptHelloData } from "./common/api";
 
 enum PageElements {
   FetchData = `[data-qa="fetch-data"]`,
@@ -12,18 +12,18 @@ enum PageElements {
 //   before(() => visit(Routes.Home));
 
 //   it("Fetches data on button click", () => {
-//     interceptBackendCall({ msg: "Test Data" }, 2000);
+//     interceptHelloData({ msg: "Test Data" }, 2000);
 //     cy.get(PageElements.FetchData).click();
 //     cy.get(PageElements.Loader).should("be.visible");
-//     cy.wait("@interceptBackendCall");
+//     cy.wait("@interceptHelloData");
 //     cy.get(PageElements.FetchedData).should("be.visible");
 //   });
 
 //   it("No data available on backend", () => {
-//     interceptBackendCall({ msg: null }, 2000);
+//     interceptHelloData({ msg: null }, 2000);
 //     cy.get(PageElements.FetchData).click();
 //     cy.get(PageElements.Loader).should("be.visible");
-//     cy.wait("@interceptBackendCall");
+//     cy.wait("@interceptHelloData");
 //     cy.get(PageElements.NoData).should("be.visible");
 //   });
 

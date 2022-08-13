@@ -2,11 +2,15 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type UserAccount = {
+  name: string;
   email: string;
   password: string;
 };
 
-type Response = {};
+type Response = {
+  authorized: boolean;
+  userName: string;
+};
 
 type ResponseError = {
   code: number;
@@ -17,6 +21,7 @@ type RequestBody = UserAccount;
 
 const accounts: UserAccount[] = [
   {
+    name: "Test User",
     email: "user@test.com",
     password: "mockPassword",
   },
@@ -28,13 +33,10 @@ const sleep = (ms: number): Promise<any> => {
   });
 };
 
-const isLoggedIn = (input: UserAccount): boolean => {
-  const account = accounts.find(
+const getUserAccount = (input: UserAccount): UserAccount | undefined =>
+  accounts.find(
     (a: UserAccount) => a.email === input.email && a.password === input.password
   );
-
-  return account !== undefined;
-};
 
 export default function handler(
   req: NextApiRequest,
@@ -49,13 +51,13 @@ export default function handler(
   // on the frontend for this demo...
   sleep(1500).then(() => {
     const body: RequestBody = JSON.parse(req.body);
-    const loggedIn = isLoggedIn(body);
+    const user = getUserAccount(body);
 
-    if (!loggedIn) {
+    if (!user) {
       res.status(401).json({ code: 401, message: "User not authorized" });
       return;
     }
 
-    res.status(200).json({});
+    res.status(200).json({ authorized: true, userName: user.name });
   });
 }

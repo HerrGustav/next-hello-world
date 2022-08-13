@@ -1,26 +1,26 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Router from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Header } from "../common/Header/Header";
-import { LoginMask } from "../common/LoginMask";
+import { VideoPlayer } from "../common/VideoPlayer/VideoPlayer";
 import { PageContainer, PageMain, Title } from "../components";
 import { Routes } from "../config";
-import { useIsLoggedIn } from "../contexts/LoginContext";
+import { useIsLoggedIn, useUserName } from "../contexts/LoginContext";
 
-const Home: NextPage = () => {
-  const [fadeIn, setFadeIn] = useState<boolean>(false);
+const Welcome: NextPage = () => {
+  const userName = useUserName();
   const userLoggedIn = useIsLoggedIn();
 
   useEffect(() => {
-    if (userLoggedIn) {
-      Router.push(Routes.Welcome);
+    if (!userLoggedIn) {
+      Router.push(Routes.Home);
       return;
     }
   }, [userLoggedIn]);
 
   return (
-    <PageContainer onTransitionEnd={() => setFadeIn(true)}>
+    <PageContainer>
       <Head>
         <title>Hello World</title>
         <meta name="description" content="Hello world!" />
@@ -28,18 +28,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      {fadeIn && <Header />}
+      <Header />
 
-      {fadeIn && (
-        <PageMain>
-          <Title data-qa="title">Login:</Title>
-          <LoginMask />
-        </PageMain>
-      )}
+      <PageMain>
+        <Title data-qa="title">Welcome back {userName}!</Title>
+        <VideoPlayer id="welcome-player" src="/oceans_test_video.mp4" />
+      </PageMain>
 
       <footer></footer>
     </PageContainer>
   );
 };
 
-export default Home;
+export default Welcome;

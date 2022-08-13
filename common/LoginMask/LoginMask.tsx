@@ -2,20 +2,17 @@ import React, { useState } from "react";
 import { Button } from "../../components";
 import { InputField } from "../../components/InputField";
 import { config } from "../../config";
+import { useLogin } from "../../contexts/LoginContext";
+import { LoginError, otherError, unauthorizedError } from "./error";
 import {
   StyledErrorMessage,
   StyledInputWrapper,
   StyledSection,
 } from "./styles";
 
-type LoginError = { type: "unauthorized" | "other"; message: string };
-const unauthorizedError: LoginError = {
-  type: "unauthorized",
-  message: "Either your given email or your password are incorrect.",
-};
-const otherError: LoginError = {
-  type: "other",
-  message: "Something went wrong. Please try later again.",
+type LoginResponseBody = {
+  authorized: boolean;
+  userName: string;
 };
 
 const validateEmail = (input: string): boolean => {
@@ -35,6 +32,7 @@ const LoginMask: React.FC = (): JSX.Element => {
   const [emailIsValid, setEmailIsValid] = useState<boolean | null>(null);
   const [password, setPassword] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [, setLogin] = useLogin();
 
   // checkEmail is only a first check that a given email has the correct format
   // it can't replace a server side check, though:
@@ -59,27 +57,41 @@ const LoginMask: React.FC = (): JSX.Element => {
   const submit = (): void => {
     setSubmitted(true);
     setError(null);
-    fetch(config.login, {
+    fetch(config.login.url, {
       method: "POST",
       body: JSON.stringify({
         email,
         password,
       }),
     }).then((res) => {
-      if (res.status !== config.successCode) {
+      //   validate response:
+      if (res.status !== config.login.successCode || !res.body) {
         setError(
-          res.status === config.unauthorizedCode
+          res.status === config.login.unauthorizedCode
             ? unauthorizedError
             : otherError
         );
         setSubmitted(false);
         return;
       }
+
+      // if all good, set the login state to the global context:
+      res
+        .json()
+        .then((b: LoginResponseBody) =>
+          setLogin({ loggedIn: b.authorized, userName: b.userName })
+        );
     });
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "Enter") {
+      submit();
+    }
+  };
+
   return (
-    <StyledSection data-qa="login-mask">
+    <StyledSection onKeyDown={handleKeyDown} data-qa="login-mask">
       <StyledInputWrapper>
         <InputField
           dataQA="login-mask--field-email"
