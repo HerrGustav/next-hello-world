@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useState } from "react";
-import { DataFetcher } from "../common/DataFetcher";
 import { Header } from "../common/Header/Header";
+import { LoginMask } from "../common/LoginMask";
 import { PageContainer, PageMain, Title } from "../components";
 
 const Home: NextPage = () => {
@@ -20,8 +20,8 @@ const Home: NextPage = () => {
 
       {fadeIn && (
         <PageMain>
-          <Title data-qa="title">Hello World.</Title>
-          <DataFetcher />
+          <Title data-qa="title">Login:</Title>
+          <LoginMask />
         </PageMain>
       )}
 
